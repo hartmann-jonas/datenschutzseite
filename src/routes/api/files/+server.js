@@ -1,9 +1,15 @@
-import { fetchFiles } from "$lib/utils";
-import { json } from "@sveltejs/kit";
+import fs from 'fs';
+import path from 'path';
 
-export const GET = async () => {
-    const allFiles = await fetchFiles();
-    console.log(allFiles)
-    const sortedFiles = allFiles
-    return json(sortedFiles);
-};
+export async function GET() {
+    const directoryPath = path.join(process.cwd(), 'static/files');
+    const files = fs.readdirSync(directoryPath);
+    let fileNames = [];
+    files.forEach(file => {
+        let fileName = file.slice("",".pdf".length * -1);
+        fileNames.push(fileName)
+    });
+    return new Response(JSON.stringify(fileNames), {
+        headers: { 'Content-Type': 'application/json' }
+    });
+}

@@ -1,7 +1,7 @@
 <script>
     /** @type {import('./$types').PageData} */
     export let data;
-    
+    const files = data.files
     import headerImg from '$lib/assets/header-img.jpeg';
 </script>
 
@@ -10,17 +10,21 @@
         <img class="title-image" src={headerImg} alt="Gruppenfoto">
     </section>
     <section class="downloads">
-        {#each data.files as file}
-        <div class="download-link">
-            <div class="download-title">
-                <h3>{file.path}</h3>
-                <a class="button" href={"src/lib/files/"+file.path+".pdf"} target="_blank"><h3>Download</h3></a>
+        {#if files.length > 0}
+            {#each files as file}
+            <div class="download-link">
+                <div class="download-title">
+                    <h3>{file}</h3>
+                    <a class="button" href={"/files/"+file+".pdf"} target="_blank"><h3>Download</h3></a>
+                </div>
+                <!--
+                    <p>Nutzungsvereinbarung für Schülerinnen und Schüler über die Nutzung des hausinternen Internetzugangs über WLAN und die damit verbundene Verarbeitung personenbezogener Daten.</p>
+                -->
             </div>
-            <!--
-                <p>Nutzungsvereinbarung für Schülerinnen und Schüler über die Nutzung des hausinternen Internetzugangs über WLAN und die damit verbundene Verarbeitung personenbezogener Daten.</p>
-            -->
-        </div>
-        {/each}
+            {/each}
+        {:else}
+            <h3>Keine Dateien gefunden.</h3>
+        {/if}
     </section>
 </div>
     
