@@ -1,10 +1,4 @@
 <script>
-    import { dev } from '$app/environment';
-    import { inject } from '@vercel/analytics';
-    
-    inject({ mode: dev ? 'development' : 'production' });
-
-
 	import logo from '$lib/assets/logo.png';
 	import logoLarge from '$lib/assets/logo-large.png';
 </script>

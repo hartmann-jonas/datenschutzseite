@@ -1,13 +1,11 @@
 <script>
     /** @type {import('./$types').PageData} */
-    export let data;
-    //const files = data.files
-    import headerImg from '$lib/assets/header-img.jpeg';
-
     import { onMount } from 'svelte';
+    import headerImg from '$lib/assets/header-img.jpeg';
 
     let files = [];
 
+    // get the filenames from the pregenerated files.json file
     async function fetchFiles() {
         const response = await fetch('/files.json');
         if (!response.ok) {
