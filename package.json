@@ -4,11 +4,12 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "npm run generate:files && vite build",
 		"preview": "vite preview",
 		"lint": "prettier --plugin-search-dir . --check .",
-		"format": "prettier --plugin-search-dir . --write ."
-	},
+		"format": "prettier --plugin-search-dir . --write .",
+		"generate:files": "node generateFilesList.js"
+  	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "*",
 		"@sveltejs/adapter-cloudflare": "*",

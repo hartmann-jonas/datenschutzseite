@@ -1,8 +1,24 @@
 <script>
     /** @type {import('./$types').PageData} */
     export let data;
-    const files = data.files
+    //const files = data.files
     import headerImg from '$lib/assets/header-img.jpeg';
+
+    import { onMount } from 'svelte';
+
+    let files = [];
+
+    async function fetchFiles() {
+        const response = await fetch('/files.json');
+        if (!response.ok) {
+            throw new Error(`Error fetching files: ${response.statusText}`);
+        }
+        files = await response.json();
+    }
+
+    onMount(() => {
+        fetchFiles();
+    });
 </script>
 
 <div class="content">
@@ -15,7 +31,7 @@
             <div class="download-link">
                 <div class="download-title">
                     <h3>{file}</h3>
-                    <a class="button" href={"/files/"+file+".pdf"} target="_blank"><h3>Download</h3></a>
+                    <a class="button" href={"/files/"+file} target="_blank"><h3>Download</h3></a>
                 </div>
                 <!--
                     <p>Nutzungsvereinbarung für Schülerinnen und Schüler über die Nutzung des hausinternen Internetzugangs über WLAN und die damit verbundene Verarbeitung personenbezogener Daten.</p>
