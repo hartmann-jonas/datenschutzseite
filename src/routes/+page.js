@@ -5,6 +5,5 @@ export async function load({ fetch }) {
       throw new Error(`Error fetching files: ${response.statusText}`);
   }
   const files = await response.json();
-  console.log(files)
   return { files };
 }
