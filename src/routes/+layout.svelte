@@ -12,7 +12,7 @@
 <header>
     <h1 class="large-title">Einverständniserklärungen des FEG</h1>
     <h1 class="small-title">Einverständniserklärungen</h1>
-    <a href="https://fe-gymnasium.de">
+    <a href="https://fe-gymnasium.de" target="_blank">
         <img class="large-logo" src={logoLarge} alt="FEG Logo">
         <img class="small-logo" src={logo} alt="FEG Logo">
     </a>
