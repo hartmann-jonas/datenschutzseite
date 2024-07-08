@@ -3,7 +3,7 @@
     import { onMount } from 'svelte';
     import headerImg from '$lib/assets/header-img.jpeg';
 
-    let paths = [];
+    let files = [];
 
     // get the filenames from the pregenerated files.json file
     async function fetchFiles() {
@@ -11,8 +11,10 @@
         if (!response.ok) {
             throw new Error(`Error fetching files: ${response.statusText}`);
         }
-        paths = await response.json();
+        files = await response.json();
 /*
+        files = paths
+
         paths.forEach(path => {
             path
         });
